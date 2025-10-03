@@ -1,42 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body >
-    <img src="My Picture.jpg" style="width: 200px; height: 300px;"/></br>
+
+<body>
+    <img src="My Picture.jpeg" style="width: 200px; height: 300px;" /></br>
     <intro></br>
         <h5 style="font-size: 100px; margin: auto;">
-        Ashish Jain
+            Ashish Jain
         </h5>
         <p style="font-size: 50px;">
-        Hi, I am an aspiring Developer learning how to develop new things.
+            Hi, I am an aspiring Developer learning how to develop new things.
         </p>
         <h1>
-        Educational Details:
+            Educational Details:
         </h1>
         <p style="font-size: 25px;">
-        12th: Global Public School, Kota</br>
-        
-        B.Tech: RTU, Kota</br>
-        M.Tech: IIITH</br>
+            12th: Global Public School, Kota</br>
+
+            B.Tech: RTU, Kota</br>
+            M.Tech: IIITH</br>
         </p>
         <h1>
-        Exp
+            Exp
         </h1>
         <p style="font-size: 25px;">
-        Intern SDE </br>
+            Intern SDE </br>
         </p>
         <h1>
-        Skills
+            Skills
         </h1>
         <p style="font-size: 25px;">
-        HTML,CSS,JS</br>
+            HTML,CSS,JS</br>
         </p>
     </intro>
-    
+
+    <script>
+        /**
+         * This function captures and logs user events to the console.
+         * @param {string} eventType - The type of event, e.g., 'view' or 'click'.
+         * @param {HTMLElement} targetElement - The element that triggered the event.
+         */
+        function logActivity(eventType, targetElement) {
+            const timestamp = new Date().toISOString();
+
+            // Create a simple, readable description of the element
+            let objectDescription = targetElement.tagName.toLowerCase();
+            if (targetElement.id) {
+                objectDescription += `#${targetElement.id}`;
+            }
+            if (targetElement.className && typeof targetElement.className === 'string') {
+                objectDescription += `.${targetElement.className.split(' ')[0]}`;
+            }
+
+            console.log(
+                `Timestamp_of_click/view: ${timestamp}, type_of_event: ${eventType}, event_object: ${objectDescription}`
+            );
+        }
+
+        // 1. Track the initial "page view"
+        document.addEventListener('DOMContentLoaded', () => {
+            logActivity('view', document.body);
+        });
+
+        // 2. Track all "click" events on the page
+        document.addEventListener('click', (event) => {
+            // `event.target` is the specific element that was clicked.
+            logActivity('click', event.target);
+        });
+    </script>
 
 </body>
+
 </html>
